@@ -1,4 +1,4 @@
-token = 'NDY5OTc4NDY1NzE0NzAwMjk4.DjUUAw.-9SoQSPby8xwJuzLqTHrIqdC3RA'
+token = 'insert token here'
 
 admin_roles = [
 'Temporary Admin', 
