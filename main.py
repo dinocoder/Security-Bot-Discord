@@ -1,7 +1,5 @@
 import discord
 import asyncio
-import time
-import re
 import config
 
 client = discord.Client()
