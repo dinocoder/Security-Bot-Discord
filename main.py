@@ -20,43 +20,50 @@ async def on_message(message):
       await message.author.send("Please do not post server invite links outside of #advertise!")
 
     #giverole and removerole command
-    if message.author.guild_permissions.administrator and message.content.startswith('*giverole') or message.content.startswith('*removerole') and message.author.guild_permissions.administrator:
-        containment = message.content.split()[1:]
-        username = containment[0]
-        roles = []
-        rolesListed = []
-        processingRole = ''
+    if message.content.startswith('*giverole') or message.content.startswith('*removerole'):
+        if message.author.guild_permissions.administrator:
+            containment = message.content.split()[1:]
+            username = containment[0]
+            roles = []
+            rolesListed = []
+            processingRole = ''
 
-        for i in containment[1:]:
-            if i.endswith(','):
-                if processingRole != '':
-                    rolesListed.append(processingRole[:-1])
-                    processingRole = ''
+            for i in containment[1:]:
+                if i.endswith(','):
+                    if processingRole != '':
+                        rolesListed.append(processingRole[:-1])
+                        processingRole = ''
+                    else:
+                        rolesListed.append(i.replace(',', ''))
                 else:
-                    rolesListed.append(i.replace(',', ''))
+                    processingRole += i
+                    processingRole += ' '
+            if processingRole != '':
+                        rolesListed.append(processingRole[:-1])
+                        processingRole = ''
+            
+            for i in rolesListed:
+                roles.append(discord.utils.get(message.guild.roles, name = i))
+
+            if len(message.mentions) > 0:
+                user = message.mentions[0]
+                if message.content.startswith('*giverole'):
+                    for i in roles:
+                        await user.add_roles(i)
+                else:
+                    for i in roles:
+                        await user.remove_roles(i)
+                return
+
             else:
-                processingRole += i
-                processingRole += ' '
-        if processingRole != '':
-                    rolesListed.append(processingRole[:-1])
-                    processingRole = ''
-        
-        for i in rolesListed:
-            roles.append(discord.utils.get(message.guild.roles, name = i))
+                user = discord.utils.get(message.guild.members, name = username)
 
-        if len(message.mentions) > 0:
-            for i in roles:
-                await message.mentions[0].add_roles(i)
-
-        else:
-            user = discord.utils.get(message.guild.members, name = username)
-
-        if message.content.startswith('*giverole'):
-            for i in roles:
-                await user.add_roles(i)
-        else:
-            for i in roles:
-                await user.remove_roles(i)
+            if message.content.startswith('*giverole'):
+                for i in roles:
+                    await user.add_roles(i)
+            else:
+                for i in roles:
+                    await user.remove_roles(i)
 
     
 
