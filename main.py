@@ -8,8 +8,8 @@ client = discord.Client()
 @client.event
 async def on_ready():
     print('We have logged in as {0.user}'.format(client))
-    #await client.change_presence(status=discord.Status.idle, activity=discord.Activity())
-
+    await client.change_presence(game = discord.Game(name = str(len(client.users)) + ' people type *help', type=3))
+    
 @client.event
 async def on_message(message):
     if message.author == client.user:
