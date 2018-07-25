@@ -2,6 +2,15 @@ import discord
 import asyncio
 import config
 
+PORT = int(os.environ.get('PORT', '5000'))
+updater = Updater(client.token)
+
+updater.start_webhook(listen="0.0.0.0",
+                    port=PORT,
+                    url_path=client.token)
+updater.bot.setWebhook("https://myappname.herokuapp.com/" + TOKEN)
+updater.idle()
+
 client = discord.Client()
 #client = commands.Bot(command_prefix = '')
 
