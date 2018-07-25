@@ -8,6 +8,7 @@ discord-rewrite = "*"
 asyncio = "*"
 yarl = "<1.2"
 gunicorn = "*"
+gevent = "*"
 
 [dev-packages]
 
