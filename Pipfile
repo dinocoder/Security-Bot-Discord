@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 discord-rewrite = "*"
 asyncio = "*"
+yarl = "<1.2"
 
 [dev-packages]
 
