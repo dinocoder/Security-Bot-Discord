@@ -1,4 +1,5 @@
 #!\zbash\bin\python3.6
+import os
 import discord
 import asyncio
 import config
