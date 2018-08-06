@@ -4,9 +4,9 @@ import asyncio
 import config
 from discord.ext import commands
 import sys, traceback
-print("eiyfdhjkncesdfvdvsvvvvvvvvvvvvvvvvvvvvvvvvvv")
-print(sys.argv)
+from boto.s3.connection import S3Connection
 
+TOKEN = S3Connection(os.environ['TOKEN'])
 
 #client = discord.Client()
 client = commands.Bot(command_prefix = '*')
@@ -93,4 +93,4 @@ async def on_member_update(before, after):
     if len(removedroles) != 0:
       await channel.send(after.name + '#' + after.discriminator + ' has been removed of the ' + removedroles[0].name + ' role.')
 
-client.run(sys.argv[1], bot = True, reconnect = True)
+client.run(TOKEN, bot = True, reconnect = True)
