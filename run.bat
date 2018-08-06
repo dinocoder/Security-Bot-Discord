@@ -1,1 +1,3 @@
-py -3.6 main.py NDY5OTc4NDY1NzE0NzAwMjk4.DkpHsQ.rV6-DKGid6rwuECFr9iqtmktld4
+@echo off
+set /p token="Enter bot token "
+py -3.6 main.py %token%
