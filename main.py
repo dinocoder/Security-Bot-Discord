@@ -1,9 +1,11 @@
 import discord
 import asyncio
 import config
+from discord.ext import commands
+import sys, traceback
 
-client = discord.Client()
-#client = commands.Bot(command_prefix = '')
+#client = discord.Client()
+client = commands.Bot(command_prefix = '*')
 
 @client.event
 async def on_ready():
@@ -87,4 +89,4 @@ async def on_member_update(before, after):
     if len(removedroles) != 0:
       await channel.send(after.name + '#' + after.discriminator + ' has been removed of the ' + removedroles[0].name + ' role.')
 
-client.run(config.token)
+client.run(config.getToken())

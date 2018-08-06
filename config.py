@@ -1,4 +1,6 @@
-token = 'NDY5OTc4NDY1NzE0NzAwMjk4.DjlQpA.aNlRcPIfcw8rtKJqamRVubdW5BM'
+def getToken():
+    token = input("Enter a bot token to use")
+    return token
 
 admin_roles = [
 'Temporary Admin', 
