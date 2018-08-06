@@ -1,1 +1,1 @@
-worker: py -3.6 main.py
+worker: run.bat
