@@ -1,1 +1,1 @@
-worker: heroku run run.sh
+worker: bash ./run.sh
